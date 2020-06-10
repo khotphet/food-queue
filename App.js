@@ -4,15 +4,23 @@ import './style.css';
 import FoodList from './components/FoodList'
 import FoodInput from './components/FoodInput'
 import FoodItem from './components/FoodItem'
+import uuid from "uuid";
 
 
 
 
 class App extends Component{
-    this.state={
-    items:[{id:1, "name": "กระเพราไก่"},{id:2,name:"ผัดคะน้า"}],
-    
+    state={
+    items:[{id:1, name: "กระเพราไก่"},{id:2,name:"ผัดคะน้า"}],
+    id:uuid(),
+    item:"",
+    editItem:false
+
   }
+handleSunmit=(e)=>{
+  console.log("Submit Data")
+}
+
 
   render(){
   return(
@@ -20,7 +28,7 @@ class App extends Component{
     <h2>Food name Application</h2>
     <div className="row">
     
-    <FoodInput/>
+    <FoodInput handleSunmit={this.handleSunmit}/>
     </div>
     <FoodList/>
     </div>
