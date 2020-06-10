@@ -3,7 +3,9 @@ import React, {Component} from "react";
 export default class FoodItem extends Component{
   render(){
     return(
-      <div>Hello FoodInput</div>
+      <div>
+      <h1>Food Item</h1>
+      </div>
     )
   }
 }
