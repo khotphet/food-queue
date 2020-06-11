@@ -21,7 +21,7 @@ handleSunmit=(e)=>{
     id:this.state.id,
     name:this.state.item
   }
-  const updateItems=[... this.state.item,newItem]
+  const updateItems=[... this.state.items,newItem]
   this.setState({
     items:updateItems,
     item:"",
@@ -63,9 +63,9 @@ handleEdit=(e)=>{
     />
     </div>
     <FoodList 
-    item={this.state.items}
+    items={this.state.items}
     handleDelete={this.handleDelete}
-    handleEdit={handleEdit}
+    handleEdit={this.handleEdit}
     />
     </div>
   )
