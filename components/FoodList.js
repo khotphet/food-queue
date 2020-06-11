@@ -3,12 +3,16 @@ import FoodItem from './FoodItem'
 
 export default class FoodList extends Component{
   render(){
+    const{items,handleEdit,handleDelete}= this.props
     return(
-      <div>
-      
-     <FoodItem/>
-    <FoodItem/>
-      </div>
+     <ul>
+     //แสดงแต่ละรายการ
+     {items.map(item=>{
+       return(
+         <FoodItem key={item.id} name={item.name} />
+       )
+     })}
+     </ul>
     )
   }
 }

@@ -8,7 +8,7 @@ import uuid from 'react-uuid'
 
 class App extends Component{
     state={
-    items:[{id:1, name: "กระเพราไก่"},{id:2,name:"ผัดคะน้า"}],
+    items:[],
     id:uuid(),
     item:"",
     editItem:false
@@ -17,12 +17,23 @@ class App extends Component{
 //เมื่อกดปุ่มบันทึกรายการ
 handleSunmit=(e)=>{
   e.preventDefault();
-  console.log("Submit Data")
+  const newItem={
+    id:this.state.id,
+    name:this.state.item
+  }
+  const updateItems=[... this.state.item,newItem]
+  this.setState({
+    items:updateItems,
+    item:"",
+    id:uuid(),
+    editItem:false
+  })
 }
 //เมื่อมีการเปลี่ยนแลง textbox
 handleChange=(e)=>{
-  e.preventDefault();
-  console.log("Data Change")
+  this.setState({
+    item:e.target.value
+  })
 }
 //เคลียข้อมูล
 clearList=(e)=>{
@@ -51,7 +62,11 @@ handleEdit=(e)=>{
     editItem={this.state.editItem}//ส่งค่าไปสถานะการแก้ไข
     />
     </div>
-    <FoodList/>
+    <FoodList 
+    item={this.state.items}
+    handleDelete={this.handleDelete}
+    handleEdit={handleEdit}
+    />
     </div>
   )
 }
