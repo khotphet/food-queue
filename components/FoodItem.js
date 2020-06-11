@@ -9,7 +9,7 @@ export default class FoodItem extends Component{
         <h6>{name}</h6>        
         <div>
         <span onClick={handleEdit}><i className="fas fa-edit"></i></span>
-        <span onClick={handleDelete}><i class="far fa-trash-alt"></i></span>
+        <span onClick={handleDelete}><i className="far fa-trash-alt"></i></span>
         </div>
         </li>
     )
