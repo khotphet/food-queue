@@ -40,7 +40,7 @@ clearList=(e)=>{
   console.log("Clear Data")
 }
 //ลบทีละรายการ
-handleDelete=(e)=>{
+handleDelete=(id)=>{
   console.log("Remove Item")
 }
 //แก้ไขรายการ
