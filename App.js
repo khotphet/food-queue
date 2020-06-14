@@ -1,18 +1,13 @@
 import React,{Component} from "react";
-import logo from './logo.svg';
-import './style.css';
 import FoodList from './components/FoodList'
 import FoodInput from './components/FoodInput'
-import FoodItem from './components/FoodItem'
 import uuid from 'react-uuid'
-
 class App extends Component{
     state={
     items:[],
     id:uuid(),
     item:"",
     editItem:false
-
   }
 //เมื่อกดปุ่มบันทึกรายการ
 handleSunmit=(e)=>{
@@ -21,7 +16,7 @@ handleSunmit=(e)=>{
     id:this.state.id,
     name:this.state.item
   }
-  const updateItems=[... this.state.items,newItem]
+  const updateItems=[...this.state.items,newItem]
   this.setState({
     items:updateItems,
     item:"",
@@ -36,16 +31,30 @@ handleChange=(e)=>{
   })
 }
 //เคลียข้อมูล
-clearList=(e)=>{
-  console.log("Clear Data")
+clearList=()=>{
+  this.setState({
+        items:[]
+  })
 }
 //ลบทีละรายการ
 handleDelete=(id)=>{
-  console.log("Remove Item")
+  const filterItems=this.state.items.filter(item=>item.id !== id)
+  this.setState({
+      items:filterItems
+  })
 }
 //แก้ไขรายการ
-handleEdit=(e)=>{
-  console.log("Edit Item")
+handleEdit=(id)=>{
+  const filterItems = this.state.items.filter(item=>item.id !== id)
+  const selectItem = this.state.items.find(item=>item.id===id)
+  // A
+  // B
+  this.setState({
+      items:filterItems,
+      item:selectItem.name,
+      id:id,
+      editItem:true
+  })
 }
 
 
@@ -66,6 +75,7 @@ handleEdit=(e)=>{
     items={this.state.items}
     handleDelete={this.handleDelete}
     handleEdit={this.handleEdit}
+    clearList={this.clearList}
     />
     </div>
   )
